@@ -1,0 +1,22 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Security.AccessControl;
+
+namespace MVCIntroDemo.Controllers;
+public class NumbersController : Controller
+{
+    private readonly ILogger<NumbersController> logger;
+
+    public NumbersController(ILogger<NumbersController> _logger)
+    {
+        logger = _logger;
+    }
+    public IActionResult Index()
+    {
+        return View(50);
+    }
+    [HttpGet]
+    public IActionResult Limit(int num)
+    {
+        return View("Index",num);
+    }
+}
